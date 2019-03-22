@@ -1,9 +1,11 @@
-package com.example.escalable;
+package com.example.escalable.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.escalable.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 

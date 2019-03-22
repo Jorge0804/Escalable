@@ -1,13 +1,17 @@
-package com.example.escalable;
+package com.example.escalable.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Recover_account extends AppCompatActivity {
+import com.example.escalable.R;
+
+public class Courses extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recover_account);
+        setContentView(R.layout.activity_courses);
+
+
     }
 }

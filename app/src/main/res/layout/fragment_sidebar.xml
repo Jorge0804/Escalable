@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="274dp"
     android:layout_height="match_parent"
-    tools:context=".Sidebar"
+    tools:context=".Fragments.Sidebar"
     android:background="@drawable/menu_options">
 
     <ImageView
