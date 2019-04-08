@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.InfoCourseFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_marginBottom="125dp">
+        <ImageView
+            android:layout_width="337dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/topimageinfo"
+            android:layout_gravity="center"
+            android:src="@mipmap/image_1"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="40dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#000"
+                android:text="Curso de programación con C#
+
+El objetivo de este tutorial es iniciarse en el arte de la programación desde cero. No se requieren conceptos previos de programación y se hace una introducción gradual en esta ciencia.
+"/>
+        </ScrollView>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:text="Ver curso"
+            android:textSize="15sp"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:background="@drawable/button_blue"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="25dp"
+            android:text="Comprar"
+            android:textSize="15sp"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:background="@drawable/button_orange"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -10,16 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.escalable.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Sidebar.OnFragmentInteractionListener} interface
+ * {@link InfoCourseFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Sidebar#newInstance} factory method to
+ * Use the {@link InfoCourseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Sidebar extends Fragment {
+public class InfoCourseFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +30,7 @@ public class Sidebar extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Sidebar() {
+    public InfoCourseFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class Sidebar extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Sidebar.
+     * @return A new instance of fragment InfoCourseFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Sidebar newInstance(String param1, String param2) {
-        Sidebar fragment = new Sidebar();
+    public static InfoCourseFragment newInstance(String param1, String param2) {
+        InfoCourseFragment fragment = new InfoCourseFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +65,7 @@ public class Sidebar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sidebar, container, false);
+        return inflater.inflate(R.layout.fragment_info_course, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -1,5 +1,6 @@
 package com.example.escalable.Adapters;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHolder>{
 
-    List<courses> cl;
+    private List<courses> cl;
 
     public Courses_adapter(List<courses> cl) {
         this.cl = cl;
@@ -36,8 +37,8 @@ public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.img_course.setImageUrl(cl.get(i).getSrc(), VolleyS.getinstance(VolleyS.getC).getImageLoader());
-        viewHolder.txt_name.setText(cl.get(i).toString());
-        viewHolder.txt_info.setText(cl.get(i).toString());
+        viewHolder.txt_name.setText(cl.get(i).getName());
+        viewHolder.txt_info.setText(cl.get(i).getInformation());
     }
 
     @Override
@@ -49,7 +50,7 @@ public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHo
     NetworkImageView img_course;
     TextView txt_name, txt_info;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             img_course = itemView.findViewById(R.id.image_course);
             txt_name = itemView.findViewById(R.id.name_course);

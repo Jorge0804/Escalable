@@ -1,5 +1,10 @@
 package com.example.escalable.Models;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import java.lang.reflect.Method;
+
 public class courses {
     Integer id;
     String name, information, src;
@@ -52,5 +57,6 @@ public class courses {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }
 

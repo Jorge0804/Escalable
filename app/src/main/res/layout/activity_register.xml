@@ -104,7 +104,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:background="@drawable/button_login"
+            android:background="@drawable/button_blue"
             android:text="Registrar"
             android:textColor="#fff"
             android:textAllCaps="false"

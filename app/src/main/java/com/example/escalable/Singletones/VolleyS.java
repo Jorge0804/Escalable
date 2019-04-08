@@ -1,14 +1,12 @@
 package com.example.escalable.Singletones;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
+import android.util.LruCache;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-import com.example.escalable.Activities.MainActivity;
 
 public class VolleyS {
     private RequestQueue rq;
@@ -48,3 +46,4 @@ public class VolleyS {
         return this.mImageLoader;
     }
 }
+
