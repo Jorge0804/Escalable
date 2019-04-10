@@ -11,23 +11,11 @@ import com.android.volley.toolbox.Volley;
 public class VolleyS {
     private RequestQueue rq;
     private static VolleyS vs = null;
-    private ImageLoader mImageLoader;
     public static Context getC;
 
     private VolleyS(Context c){
         getC = c;
         rq = Volley.newRequestQueue(c);
-        mImageLoader = new ImageLoader(this.rq, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-
-            public void putBitmap(String url, Bitmap bitmap) {
-                mCache.put(url, bitmap);
-            }
-
-            public Bitmap getBitmap(String url) {
-                return mCache.get(url);
-            }
-        });
     }
 
     public static VolleyS getinstance(Context c){
@@ -40,10 +28,6 @@ public class VolleyS {
 
     public RequestQueue getRq(){
         return rq;
-    }
-
-    public ImageLoader getImageLoader(){
-        return this.mImageLoader;
     }
 }
 

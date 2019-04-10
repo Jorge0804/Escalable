@@ -34,36 +34,6 @@ public class Courses extends AppCompatActivity {
 
 
 
-        JsonArrayRequest jar = new JsonArrayRequest(
-                Request.Method.GET,
-                "http://toshito.mipantano.com/api/showcourse",
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<List<courses>>(){}.getType();
-                        List<courses> lc = gson.fromJson(response.toString(), type);
 
-
-                        Log.d("respuesta", response.toString());
-                        Courses_adapter courses_adapter = new Courses_adapter(lc);
-
-                        recyclerView = findViewById(R.id.contenedor);
-                        recyclerView.setAdapter(courses_adapter);
-
-                        LinearLayoutManager lm = new LinearLayoutManager(Courses.this);
-                        lm.setOrientation(LinearLayoutManager.VERTICAL);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-                        Toast.makeText(Courses.this, response.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_SHORT).show();
-            }
-        });
-        VolleyS.getinstance(getApplicationContext()).getRq().add(jar);
     }
 }

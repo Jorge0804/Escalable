@@ -4,30 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.escalable.Activities.MainActivity;
-import com.example.escalable.Adapters.Courses_adapter;
 import com.example.escalable.Models.courses;
 import com.example.escalable.R;
-import com.example.escalable.Singletones.VolleyS;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,34 +71,7 @@ public class CoursesFragment extends Fragment {
         View v;
         final Context context = getContext();
         v = inflater.inflate(R.layout.fragment_courses, container, false);
-        recyclerView = v.findViewById(R.id.courses_container);
-
-        JsonArrayRequest jar = new JsonArrayRequest(
-                Request.Method.GET,
-                "http://toshito.mipantano.com/api/showcourse",
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Gson gson = new Gson();
-                        Type tp = new TypeToken<courses>() {}.getType();
-                        List<courses> cl = gson.fromJson(response.toString(), tp);
-                        Courses_adapter ca = new Courses_adapter(cl);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        recyclerView.setAdapter(ca);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "nothing", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Log.d("error", jar.toString());
-
-        VolleyS.getinstance(context).getRq().add(jar);
-
-
+        courses.ShowCourses(v, context);
         return v;
     }
 

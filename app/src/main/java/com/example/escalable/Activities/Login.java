@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.escalable.Models.users;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.JsonObject;
@@ -41,7 +42,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId())
         {
             case R.id.button_login:
-                Intent intent = new Intent(getApplicationContext(), Courses.class);
+                //users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext());
+                Intent intent = new Intent(getApplicationContext(), SidebarActivity.class);
                 startActivity(intent);
                 break;
             case R.id.txt_register:

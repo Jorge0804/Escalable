@@ -1,6 +1,22 @@
 package com.example.escalable.Models;
 
 
+import android.content.Context;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.escalable.Class.Data;
+import com.example.escalable.Singletones.VolleyS;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class users {
     Integer id;
     String name, email, password, api_token;
@@ -51,5 +67,35 @@ public class users {
 
     public void setApi_token(String api_token) {
         this.api_token = api_token;
+    }
+
+    public static void Login(String mail, String pass, final Context context)
+    {
+        JSONObject user = new JSONObject();
+        try {
+            user.put("email", mail);
+            user.put("password", pass);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
+
+        JsonObjectRequest jar = new JsonObjectRequest(
+                Request.Method.POST,
+                Data.url + "login",
+                user,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(context,response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyS.getinstance(context).getRq().add(jar);
     }
 }
