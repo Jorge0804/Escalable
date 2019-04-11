@@ -1,11 +1,6 @@
 package com.example.escalable.Models;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,8 +10,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.escalable.Adapters.Blogs_adapter;
 import com.example.escalable.Adapters.Courses_adapter;
-import com.example.escalable.Fragments.InfoCourseFragment;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.Gson;
@@ -28,17 +23,17 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class courses{
+public class blogs {
     Integer id;
-    String name, information, src;
-    Double price;
+    String name, excerpt, file, description, created_at;
 
-    public courses(Integer id, String name, String information, String src, Double price) {
+    public blogs(Integer id, String name, String excerpt, String file, String description, String created_at) {
         this.id = id;
         this.name = name;
-        this.information = information;
-        this.src = src;
-        this.price = price;
+        this.excerpt = excerpt;
+        this.file = file;
+        this.description = description;
+        this.created_at = created_at;
     }
 
     public Integer getId() {
@@ -57,49 +52,55 @@ public class courses{
         this.name = name;
     }
 
-    public String getInformation() {
-        return information;
+    public String getExcerpt() {
+        return excerpt;
     }
 
-    public void setInformation(String information) {
-        this.information = information;
+    public void setExcerpt(String excerpt) {
+        this.excerpt = excerpt;
     }
 
-    public String getSrc() {
-        return src;
+    public String getFile() {
+        return file;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
+    public void setFile(String file) {
+        this.file = file;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public static void ShowCourses(View v, final Context context)
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public static void ShowBlogs(View v, final Context context)
     {
         final RecyclerView recyclerView;
-        recyclerView = v.findViewById(R.id.courses_container);
+        recyclerView = v.findViewById(R.id.blogs_container);
 
         JsonArrayRequest jar = new JsonArrayRequest(
                 Request.Method.GET,
-                "http://toshito.mipantano.com/api/showcourse",
+                "http://toshito.mipantano.com/api/showposts",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Gson gson = new Gson();
-                        Type type = new TypeToken<List<courses>>(){}.getType();
-                        List<courses> lc = gson.fromJson(response.toString(), type);
-                        Courses_adapter courses_adapter = new Courses_adapter(lc);
-
-                        recyclerView.setAdapter(courses_adapter);
-
+                        Type type = new TypeToken<List<blogs>>(){}.getType();
+                        List<blogs> lb = gson.fromJson(response.toString(), type);
+                        Blogs_adapter blogs_adapter = new Blogs_adapter(lb);
+                        recyclerView.setAdapter(blogs_adapter);
                         LinearLayoutManager lm = new LinearLayoutManager(context);
                         lm.setOrientation(LinearLayoutManager.VERTICAL);
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -112,17 +113,4 @@ public class courses{
         });
         VolleyS.getinstance(context).getRq().add(jar);
     }
-
-    public static View.OnClickListener showinfo(final courses c, Context context)
-    {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-            }
-        };
-    }
 }
-

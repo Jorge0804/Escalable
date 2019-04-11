@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.escalable.Models.blogs;
 import com.example.escalable.R;
 
 /**
@@ -68,6 +69,7 @@ public class BlogsFragment extends Fragment {
         View v;
         RecyclerView recyclerView;
         v = inflater.inflate(R.layout.fragment_blogs, container, false);
+        blogs.ShowBlogs(v, getContext());
         return v;
     }
 

@@ -15,8 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
+import com.example.escalable.Fragments.InfoCourseFragment;
 import com.example.escalable.R;
 
 public class SidebarActivity extends AppCompatActivity
@@ -38,6 +40,8 @@ public class SidebarActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setBackgroundColor(getResources().getColor(R.color.blue));
     }
 
     @Override
@@ -89,7 +93,12 @@ public class SidebarActivity extends AppCompatActivity
         } else if (id == R.id.nav_mycourses) {
 
         } else if (id == R.id.nav_user) {
-
+            Data.removeapi_token();
+        }
+        else if (id == R.id.courses_container)
+        {
+            selected_fragment = true;
+            fragment = new InfoCourseFragment();
         }
 
         if(selected_fragment){

@@ -14,26 +14,26 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.escalable.Activities.MainActivity;
 import com.example.escalable.Class.Data;
-import com.example.escalable.Models.courses;
+import com.example.escalable.Models.blogs;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHolder>{
+public class Blogs_adapter extends RecyclerView.Adapter<Blogs_adapter.ViewHolder>{
 
-    private List<courses> cl;
+    private List<blogs> bl;
     Context context;
 
-    public Courses_adapter(List<courses> cl) {
-        this.cl = cl;
+    public Blogs_adapter(List<blogs> bl) {
+        this.bl = bl;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_courses, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_blogs, viewGroup, false);
         context = view.getContext();
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
@@ -41,36 +41,29 @@ public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        Picasso.with(context).load(Data.Image_url + "courses_img/" + cl.get(i).getSrc()).fit().into(viewHolder.image);
-        Log.d("img", cl.get(i).getSrc());
-        viewHolder.txt_price.setText("$"+cl.get(i).getPrice().toString());
-
-        if(cl.get(i).getName().length() > 36)
-        {
-            viewHolder.txt_name.setText(cl.get(i).getName().substring(0, 34) + "...");
-        }
-        else
-        {
-            viewHolder.txt_name.setText(cl.get(i).getName());
-        }
-
+        Picasso.with(context).load(Data.Image_url + "posts_img/" + bl.get(i).getFile()).fit().into(viewHolder.image);
+        Log.d("img", bl.get(i).getFile());
+        viewHolder.txt_title.setText(bl.get(i).getName().toString());
+        viewHolder.txt_extract.setText(bl.get(i).getExcerpt().toString());
+        viewHolder.txt_footer.setText(bl.get(i).getId() + "|" + bl.get(i).getCreated_at());
     }
 
     @Override
     public int getItemCount() {
-        return cl.size();
+        return bl.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-    TextView txt_name, txt_price;
-    ImageView image;
+        TextView txt_title, txt_extract, txt_footer;
+        ImageView image;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             context = itemView.getContext();
             image = itemView.findViewById(R.id.image_course);
-            txt_name = itemView.findViewById(R.id.name_course);
-            txt_price = itemView.findViewById(R.id.price_course);
+            txt_title = itemView.findViewById(R.id.titlecardviewblog);
+            txt_extract = itemView.findViewById(R.id.extractcardviewblog);
+            txt_footer = itemView.findViewById(R.id.footerblogcardview);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.escalable.Activities;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.escalable.Class.Data;
 import com.example.escalable.Models.users;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
@@ -42,9 +44,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId())
         {
             case R.id.button_login:
-                //users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), SidebarActivity.class);
-                startActivity(intent);
+                users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext());
+                if (Data.check_session())
+                {
+                    Intent intent = new Intent(getApplicationContext(), SidebarActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.txt_register:
                 Intent intent1 = new Intent(getApplicationContext(), Register.class);

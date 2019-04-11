@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"></include>
+
+    <RelativeLayout
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="75dp">
+
+        <!--Parte del Blog-->
+        <LinearLayout
+            android:id="@+id/layoutblog"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:orientation="vertical">
+
+            <!--Titulo del Blog-->
+            <TextView
+                android:id="@+id/blogtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="Huawei cambiará de sistema operativo"
+                android:textAlignment="center"
+                android:textColor="#ff000000"
+                android:textSize="22sp" />
+
+            <!--Creador del Blog-->
+            <TextView
+                android:id="@+id/bloguser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raul Alejandro Lira"
+                android:textColor="#ff000000"
+                android:textSize="14sp" />
+
+            <!--Tipo de usuario y fecha-->
+            <TextView
+                android:id="@+id/bloginfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin | 10/04/2019"
+                android:textColor="#ff000000"
+                android:textSize="14sp" />
+
+            <!--Imagen del blog-->
+            <ImageView
+                android:id="@+id/blogimage"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/cardview_blog_style"
+                android:src="@mipmap/huawei" />
+
+            <!--Extracto del Blog-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginVertical="5dp"
+                android:text="¿Java Srript un robo?"
+                android:textColor="#ff000000"
+                android:textSize="20dp" />
+
+            <!--Contenido del Blog-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <TextView
+                    android:id="@+id/blogcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera quelogró hacer un libro de textos especimen. No sólo sobrevi-vió 500 años, sino que también ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas, las cuales contenían pasajesde Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incl.ye versiones de Lorem Ipsum."
+                    android:textAlignment="textStart"
+                    android:textColor="#353535" />
+            </ScrollView>
+        </LinearLayout>
+
+        <!--Creacion de Comentarios-->
+        <LinearLayout
+            android:id="@+id/layoutcreatecomment"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_below="@+id/layoutblog"
+            android:background="@drawable/comment_background"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/usercommentsend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fernando Gutierrez"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:hint="Escribe tu comentario"
+                android:inputType="textWebEmailAddress"
+                android:textColor="@color/blue"
+                android:textColorHint="#000000"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="110dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="90dp"
+                    android:background="@color/blue"
+                    android:text="Publicar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:layout_width="110dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:text="Cancelar"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--Visualizacion de comentarios-->
+        <LinearLayout
+            android:id="@+id/layoutviewcomments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutcreatecomment"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/comment_background"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/usercomment"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fernando Gutierrez"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/usercommentdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="10/04/2019"
+                    android:textColor="@color/grey_text"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/userpreviewcomment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Muy Buena Popo"
+                android:textColor="@color/grey_text"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <!--Acerca de ..-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutviewcomments"
+            android:text="A continuacion"
+            android:textColor="@color/blue" />
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
