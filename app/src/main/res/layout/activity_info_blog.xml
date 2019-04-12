@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/layoutblog"
                 android:layout_width="match_parent"
@@ -76,61 +76,7 @@
                     android:textAlignment="textStart"
                     android:textColor="#353535" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutviewcomments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layoutcreatecomment"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/comment_background"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/usercomment"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Fernando Gutierrez"
-                        android:textColor="@color/blue"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/usercommentdate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="10/04/2019"
-                        android:textColor="@color/grey_text"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/userpreviewcomment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:text="Muy Buena Popo"
-                    android:textColor="@color/grey_text"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <!--Acerca de ..-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layoutviewcomments"
-                android:text="A continuacion"
-                android:textColor="@color/blue" />
         </RelativeLayout>
     </ScrollView>
-    <!--Parte del Blog-->
 
 </RelativeLayout>

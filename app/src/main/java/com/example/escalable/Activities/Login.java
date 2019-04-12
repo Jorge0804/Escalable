@@ -45,12 +45,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         {
             case R.id.button_login:
                 users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext());
-                if (Data.check_session())
-                {
-                    Intent intent = new Intent(getApplicationContext(), SidebarActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
                 break;
             case R.id.txt_register:
                 Intent intent1 = new Intent(getApplicationContext(), Register.class);

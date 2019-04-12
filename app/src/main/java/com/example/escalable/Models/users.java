@@ -12,6 +12,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.escalable.Activities.Login;
+import com.example.escalable.Activities.SidebarActivity;
 import com.example.escalable.Class.Data;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.JsonObject;
@@ -91,9 +93,12 @@ public class users {
                     public void onResponse(JSONObject response) {
                         try {
                             Data.setapi_token(response.getString("api_token"));
+                            Toast.makeText(context, "Bienvenido "+ response.getString("name"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        Intent in = new Intent(context, SidebarActivity.class);
+                        context.startActivity(in);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -115,8 +120,6 @@ public class users {
             e.printStackTrace();
         }
 
-        Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
-
         JsonObjectRequest jar = new JsonObjectRequest(
                 Request.Method.POST,
                 Data.url + "register",
@@ -127,6 +130,8 @@ public class users {
                         try {
                             Data.setapi_token(response.getString("api_token"));
                             Toast.makeText(context, "Registro exitoso: " + response.getString("name"), Toast.LENGTH_SHORT).show();
+                            Intent in = new Intent(context, SidebarActivity.class);
+                            context.startActivity(in);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
