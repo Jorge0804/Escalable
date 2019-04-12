@@ -5,30 +5,27 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.escalable.Activities.Recover_account;
-import com.example.escalable.Models.courses;
+import com.example.escalable.Activities.Login;
+import com.example.escalable.Class.Data;
 import com.example.escalable.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CoursesFragment.OnFragmentInteractionListener} interface
+ * {@link UserFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CoursesFragment#newInstance} factory method to
+ * Use the {@link UserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CoursesFragment extends Fragment {
+public class UserFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RecyclerView recyclerView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -36,7 +33,7 @@ public class CoursesFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public CoursesFragment() {
+    public UserFragment() {
         // Required empty public constructor
     }
 
@@ -46,16 +43,15 @@ public class CoursesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CoursesFragment.
+     * @return A new instance of fragment UserFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CoursesFragment newInstance(String param1, String param2) {
-        CoursesFragment fragment = new CoursesFragment();
+    public static UserFragment newInstance(String param1, String param2) {
+        UserFragment fragment = new UserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -71,10 +67,17 @@ public class CoursesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View v;
-        final Context context = getContext();
-        v = inflater.inflate(R.layout.fragment_courses, container, false);
-        courses.ShowCourses(v, context);
+        v = inflater.inflate(R.layout.fragment_user, container, false);
+        v.findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Data.removeapi_token();
+                Intent in = new Intent(getContext(), Login.class);
+                startActivity(in);
+            }
+        });
         return v;
     }
 

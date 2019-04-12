@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.InfoCourse">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/blue"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/InfoCourseName"
+        android:layout_width="360dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:text="Firebase"
+        android:layout_alignParentTop="true"
+        android:textColor="#fff"
+        android:textSize="22dp"
+        android:layout_margin="5dp" />
+    <!--Informacion del Curso-->
+    <TextView
+        android:id="@+id/InfoCourseInfo"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
+        android:layout_below="@+id/InfoCourseName"
+        android:layout_centerHorizontal="true"
+        android:text="De texto. Lorem Ipsum ha sido el texto de
+relleno estándar de las industrias desde el
+año 1500, cuando un impresor (N. del T.
+persona que se dedica a laimprenta)"
+        android:textColor="#fff"
+        android:textSize="18dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/layout_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_below="@+id/InfoCourseInfo"
+        android:orientation="vertical"
+        android:background="@drawable/myprofile_cardbackground"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/image_1"
+                android:id="@+id/InfoCourseImage"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/InfoCourseCost"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:text="$1000"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/orange"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="20dp"/>
+        <!--Boton Ver Curso-->
+        <Button
+            android:id="@+id/InfoCourseSeeCourse"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Ver curso"
+            android:layout_marginHorizontal="25dp"
+            android:textSize="14dp"
+            android:textColor="#fff"
+            android:background="@drawable/button_blue" />
+        <!--Boton Comprar-->
+        <Button
+            android:id="@+id/InfoCoursePay"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_below="@+id/InfoCourseSeeCourse"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Comprar"
+            android:textSize="14dp"
+            android:textColor="#fff"
+            android:background="@drawable/button_orange"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/InfoCourseslabelcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/layout_content"
+        android:text="Contenido del Curso"
+        android:textSize="16dp"
+        android:textColor="#ff000000"
+        android:layout_marginVertical="10dp"/>
+
+    <ScrollView
+        android:id="@+id/backgroundInfoCoursesBottom"
+        android:layout_centerHorizontal="true"
+        android:layout_width="330dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/InfoCourseslabelcontent"
+        android:layout_gravity="center"
+        android:translationZ="-1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/myprofile_cardbackground">
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -46,6 +46,8 @@ public class Blogs_adapter extends RecyclerView.Adapter<Blogs_adapter.ViewHolder
         viewHolder.txt_title.setText(bl.get(i).getName().toString());
         viewHolder.txt_extract.setText(bl.get(i).getExcerpt().toString());
         viewHolder.txt_footer.setText(bl.get(i).getId() + "|" + bl.get(i).getCreated_at());
+
+        viewHolder.itemView.setOnClickListener(blogs.showinfo(bl.get(i), context));
     }
 
     @Override

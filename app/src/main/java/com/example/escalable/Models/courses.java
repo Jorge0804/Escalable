@@ -15,14 +15,21 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.escalable.Activities.InfoCourse;
 import com.example.escalable.Adapters.Courses_adapter;
+import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.InfoCourseFragment;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -32,13 +39,23 @@ public class courses{
     Integer id;
     String name, information, src;
     Double price;
+    List<modules> modulesList;
 
-    public courses(Integer id, String name, String information, String src, Double price) {
+    public courses(Integer id, String name, String information, String src, Double price, List<modules> modulesList) {
         this.id = id;
         this.name = name;
         this.information = information;
         this.src = src;
         this.price = price;
+        this.modulesList = modulesList;
+    }
+
+    public List<modules> getModulesList() {
+        return modulesList;
+    }
+
+    public void setModulesList(List<modules> modulesList) {
+        this.modulesList = modulesList;
     }
 
     public Integer getId() {
@@ -113,14 +130,18 @@ public class courses{
         VolleyS.getinstance(context).getRq().add(jar);
     }
 
-    public static View.OnClickListener showinfo(final courses c, Context context)
+    public static View.OnClickListener showinfo(final courses c, final Context context)
     {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
+                Intent in = new Intent(v.getContext(), InfoCourse.class);
+                in.putExtra("id", c.getId().toString());
+                in.putExtra("name", c.getName());
+                in.putExtra("information", c.getInformation());
+                in.putExtra("src", c.getSrc());
+                in.putExtra("price", c.getPrice());
+                context.startActivity(in);
             }
         };
     }

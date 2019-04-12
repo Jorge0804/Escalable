@@ -1,6 +1,7 @@
 package com.example.escalable.Models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.escalable.Activities.InfoBlog;
+import com.example.escalable.Activities.InfoCourse;
 import com.example.escalable.Adapters.Blogs_adapter;
 import com.example.escalable.Adapters.Courses_adapter;
 import com.example.escalable.R;
@@ -112,5 +115,22 @@ public class blogs {
             }
         });
         VolleyS.getinstance(context).getRq().add(jar);
+    }
+
+    public static View.OnClickListener showinfo(final blogs c, final Context context)
+    {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), InfoBlog.class);
+                in.putExtra("id", c.getId().toString());
+                in.putExtra("name", c.getName());
+                in.putExtra("excerpt", c.getExcerpt());
+                in.putExtra("file", c.getFile());
+                in.putExtra("description", c.getDescription());
+                in.putExtra("created", c.getCreated_at());
+                context.startActivity(in);
+            }
+        };
     }
 }

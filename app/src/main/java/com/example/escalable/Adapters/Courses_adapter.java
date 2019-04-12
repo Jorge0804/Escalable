@@ -1,8 +1,10 @@
 package com.example.escalable.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,10 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.escalable.Activities.MainActivity;
+import com.example.escalable.Activities.Recover_account;
 import com.example.escalable.Class.Data;
+import com.example.escalable.Fragments.InfoCourseFragment;
 import com.example.escalable.Models.courses;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
@@ -42,7 +47,6 @@ public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Picasso.with(context).load(Data.Image_url + "courses_img/" + cl.get(i).getSrc()).fit().into(viewHolder.image);
-        Log.d("img", cl.get(i).getSrc());
         viewHolder.txt_price.setText("$"+cl.get(i).getPrice().toString());
 
         if(cl.get(i).getName().length() > 36)
@@ -53,7 +57,7 @@ public class Courses_adapter extends RecyclerView.Adapter<Courses_adapter.ViewHo
         {
             viewHolder.txt_name.setText(cl.get(i).getName());
         }
-
+        viewHolder.itemView.setOnClickListener(courses.showinfo(cl.get(i), context));
     }
 
     @Override

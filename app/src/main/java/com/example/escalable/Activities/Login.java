@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 {
                     Intent intent = new Intent(getApplicationContext(), SidebarActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 break;
             case R.id.txt_register:

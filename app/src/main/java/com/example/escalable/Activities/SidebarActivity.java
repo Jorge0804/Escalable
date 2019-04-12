@@ -19,11 +19,12 @@ import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
 import com.example.escalable.Fragments.InfoCourseFragment;
+import com.example.escalable.Fragments.UserFragment;
 import com.example.escalable.R;
 
 public class SidebarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, CoursesFragment.OnFragmentInteractionListener,
-        BlogsFragment.OnFragmentInteractionListener {
+        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,8 @@ public class SidebarActivity extends AppCompatActivity
         } else if (id == R.id.nav_mycourses) {
 
         } else if (id == R.id.nav_user) {
-            Data.removeapi_token();
+            selected_fragment = true;
+            fragment = new UserFragment();
         }
         else if (id == R.id.courses_container)
         {
