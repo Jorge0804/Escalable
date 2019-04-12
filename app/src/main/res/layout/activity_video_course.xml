@@ -73,15 +73,10 @@ persona que se dedica a laimprenta)"
         android:background="@drawable/myprofile_cardbackground">
 
         <ExpandableListView
-            android:id="@+id/Expansivevideocontent"
-            android:layout_width="280dp"
-            android:layout_height="60dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentTop="true">
-
-
+            android:id="@+id/expandibllistvideos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         </ExpandableListView>
-
     </RelativeLayout>
 
 </RelativeLayout>

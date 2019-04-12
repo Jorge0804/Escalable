@@ -114,7 +114,8 @@ persona que se dedica a laimprenta)"
                 android:textColor="#ff000000"
                 android:layout_marginVertical="10dp"/>
 
-            <RelativeLayout
+            <LinearLayout
+                android:padding="10dp"
                 android:id="@+id/backgroundInfoCoursesBottom"
                 android:layout_centerHorizontal="true"
                 android:layout_width="330dp"
@@ -123,9 +124,15 @@ persona que se dedica a laimprenta)"
                 android:layout_gravity="center"
                 android:translationZ="-1dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/myprofile_cardbackground">
+                android:orientation="vertical">
 
-            </RelativeLayout>
+                <ExpandableListView
+                    android:id="@+id/expandibleinfocourses"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </ExpandableListView>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
