@@ -1,7 +1,10 @@
 package com.example.escalable.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import com.squareup.picasso.Picasso;
 public class InfoCourse extends AppCompatActivity {
     TextView InfoCourseName, InfoCourseInfo;
     ImageView InfoCourseImage;
+    Button InfoCourseSeeCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,16 @@ public class InfoCourse extends AppCompatActivity {
         InfoCourseName = findViewById(R.id.InfoCourseName);
         InfoCourseInfo = findViewById(R.id.InfoCourseInfo);
         InfoCourseImage = findViewById(R.id.InfoCourseImage);
+        InfoCourseSeeCourse = findViewById(R.id.InfoCourseSeeCourse);
+
+        InfoCourseSeeCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(), VideoCourse.class);
+                in.putExtra("name", getIntent().getExtras().getString("name"));
+                startActivity(in);
+            }
+        });
 
         InfoCourseName.setText(getIntent().getExtras().getString("name"));
         InfoCourseInfo.setText(getIntent().getExtras().getString("information"));

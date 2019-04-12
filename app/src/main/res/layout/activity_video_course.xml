@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.VideoCourse">
+    <TextView
+        android:id="@+id/VideoCoursename"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:text="Firebase"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="30dp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:layout_below="@+id/VideoCoursename"
+        android:id="@+id/VideoCoursetitle"
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:text="Configuracion"
+        android:textColor="#ff000000"
+        android:textSize="18dp"
+        android:layout_centerHorizontal="true"/>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/videocontain"
+        android:layout_below="@+id/VideoCoursetitle">
+        <VideoView
+            android:id="@+id/VideoCourseVideo"
+            android:layout_marginVertical="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="360dp"
+            android:layout_height="200dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/VideoCourseInformation"
+        android:layout_below="@+id/videocontain"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="De texto. Lorem Ipsum ha sido el texto de
+relleno estándar de las industrias desde el
+año 1500, cuando un impresor (N. del T.
+persona que se dedica a laimprenta)"
+        android:textSize="18dp"
+        android:textColor="#ff000000"/>
+
+    <TextView
+        android:id="@+id/VideoCourseLabelMoreVideos"
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/VideoCourseInformation"
+        android:layout_centerHorizontal="true"
+        android:text="Mas Videos"
+        android:textColor="#ff000000"
+        android:gravity="center_vertical"
+        android:textSize="18dp"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/VideoCourseLabelMoreVideos"
+        android:layout_centerHorizontal="true"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:translationZ="-1dp"
+        android:layout_marginVertical="4dp"
+        android:background="@drawable/myprofile_cardbackground">
+
+        <ExpandableListView
+            android:id="@+id/Expansivevideocontent"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true">
+
+
+        </ExpandableListView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

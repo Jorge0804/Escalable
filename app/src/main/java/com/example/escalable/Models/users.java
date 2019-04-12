@@ -82,9 +82,6 @@ public class users {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
-
         JsonObjectRequest jar = new JsonObjectRequest(
                 Request.Method.POST,
                 Data.url + "login",

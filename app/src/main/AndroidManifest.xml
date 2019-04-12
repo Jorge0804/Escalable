@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.InfoCourse"></activity>
+        <activity android:name=".Activities.VideoCourse"></activity>
+        <activity android:name=".Activities.InfoCourse" />
         <activity android:name=".Activities.InfoBlog" />
         <activity
             android:name=".Activities.SidebarActivity"
