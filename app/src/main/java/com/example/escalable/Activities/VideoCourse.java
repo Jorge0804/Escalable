@@ -67,7 +67,6 @@ public class VideoCourse extends AppCompatActivity {
         List<String> list1 = new ArrayList<>();
         list1.add("Google Map Google MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle Map");
 
-
         List<String> list2 = new ArrayList<>();
         list2.add("Xamarin Expandable ListView");
 
