@@ -21,8 +21,14 @@
             android:id="@+id/nav_courses"
             android:icon="@mipmap/courses"
             android:title="Cursos" />
+        <item
+            android:id="@+id/nav_plains"
+            android:icon="@mipmap/planes"
+            android:title="Planes" />
+        <item
+            android:id="@+id/nav_mypays"
+            android:icon="@mipmap/mispagos"
+            android:title="Mis Planes" />
     </group>
-
-
 
 </menu>
