@@ -19,6 +19,7 @@ import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
 import com.example.escalable.Fragments.InfoCourseFragment;
+import com.example.escalable.Fragments.MypaysFragment;
 import com.example.escalable.Fragments.UserFragment;
 import com.example.escalable.R;
 
@@ -96,12 +97,19 @@ public class SidebarActivity extends AppCompatActivity
         } else if (id == R.id.nav_user) {
             selected_fragment = true;
             fragment = new UserFragment();
-        }
-        else if (id == R.id.courses_container)
-        {
+        } else if (id == R.id.courses_container) {
             selected_fragment = true;
             fragment = new InfoCourseFragment();
+        } else if (id == R.id.nav_plains) {
+
+        } else if (id == R.id.nav_mypays){
+            selected_fragment = true;
+            fragment = new MypaysFragment();
         }
+
+
+
+
 
         if(selected_fragment){
             getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();

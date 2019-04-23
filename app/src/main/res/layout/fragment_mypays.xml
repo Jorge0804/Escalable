@@ -60,9 +60,54 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <TextView
+        android:layout_below="@id/containerplains"
+        android:id="@+id/lblcomprasindividuales"
+        android:textColor="#ff000000"
+        android:textSize="15dp"
+        android:layout_marginVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras Individuales"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblcurso"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Curso"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblprecio"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Precio"
+        android:layout_toRightOf="@id/lblcurso"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblcomprado"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Comprado"
+        android:layout_toRightOf="@id/lblprecio"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="10dp"
-        android:layout_below="@id/containerplains"
+        android:layout_below="@id/lblcurso"
         android:id="@+id/containerindividualpurchases"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
