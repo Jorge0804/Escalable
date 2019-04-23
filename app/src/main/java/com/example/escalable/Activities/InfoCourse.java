@@ -10,11 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.escalable.Adapters.Expandiblecoursesinfo_adapter;
 import com.example.escalable.Class.Data;
+import com.example.escalable.Models.modules;
 import com.example.escalable.R;
+import com.example.escalable.Singletones.VolleyS;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,16 +47,8 @@ public class InfoCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_course);
 
-        listDataHeader = new ArrayList<>();
         listView = (ExpandableListView)findViewById(R.id.expandibleinfocourses);
-        Iniciar();
-
-        listCourseInfo = new Expandiblecoursesinfo_adapter(this,listDataHeader,listHash);
-        listView.setAdapter(listCourseInfo);
-
-
-
-
+        FillIn();
 
         InfoCourseName = findViewById(R.id.InfoCourseName);
         InfoCourseInfo = findViewById(R.id.InfoCourseInfo);
@@ -55,6 +60,7 @@ public class InfoCourse extends AppCompatActivity {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), VideoCourse.class);
                 in.putExtra("name", getIntent().getExtras().getString("name"));
+                in.putExtra("id", getIntent().getExtras().getString("id"));
                 startActivity(in);
             }
         });
@@ -68,28 +74,46 @@ public class InfoCourse extends AppCompatActivity {
                 .into(InfoCourseImage);
         }
 
+        private void FillIn() {
+            JSONArray course = new JSONArray();
+            try {
+                course.put(0, getIntent().getExtras().getString("id"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonArrayRequest jar = new JsonArrayRequest(
+                    Request.Method.POST,
+                    Data.url + "showmodules",
+                    course,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<List<modules>>(){}.getType();
+                            List<modules> lm = gson.fromJson(response.toString(), type);
 
 
+                            listDataHeader = new ArrayList<>();
+                            listHash = new HashMap<>();
 
-
-        private void Iniciar() {
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
-
-        List<String> list1 = new ArrayList<>();
-        list1.add("Google Map Google MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle Map");
-
-
-        List<String> list2 = new ArrayList<>();
-        list2.add("Xamarin Expandable ListView");
-
-        listDataHeader.add("Kotlin");
-        listDataHeader.add("JavaScript");
-
-        listHash.put(listDataHeader.get(0),list2);
-        listHash.put(listDataHeader.get(1),list1);
-
-    }
+                            for (int i = 0; i<lm.size(); i++) {
+                                List<String> list1 = new ArrayList<>();
+                                listDataHeader.add(lm.get(i).getNombre());
+                                list1.add(lm.get(i).getInformation());
+                                listHash.put(listDataHeader.get(i),list1);
+                            }
+                            listCourseInfo = new Expandiblecoursesinfo_adapter(getApplicationContext(),listDataHeader,listHash);
+                            listView.setAdapter(listCourseInfo);
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(InfoCourse.this, "Hay un problema", Toast.LENGTH_SHORT).show();
+                }
+            });
+            VolleyS.getinstance(getApplicationContext()).getRq().add(jar);
+        }
 
 
 }

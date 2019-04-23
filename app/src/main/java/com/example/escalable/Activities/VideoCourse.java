@@ -8,13 +8,27 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.escalable.Adapters.Expandiblecoursesinfo_adapter;
 import com.example.escalable.Adapters.Expandiblecoursesvideos_adapter;
+import com.example.escalable.Class.Data;
+import com.example.escalable.Models.modules;
 import com.example.escalable.R;
+import com.example.escalable.Singletones.VolleyS;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,13 +49,7 @@ public class VideoCourse extends AppCompatActivity {
 
         listDataHeader = new ArrayList<>();
         listView = (ExpandableListView)findViewById(R.id.expandibllistvideos);
-        Iniciar();
-
-        listCourseInfo = new Expandiblecoursesvideos_adapter(this,listDataHeader,listHash);
-        listView.setAdapter(listCourseInfo);
-
-
-
+        FillIn();
 
         VideoCourseVideo = findViewById(R.id.VideoCourseVideo);
         VideoCoursename = findViewById(R.id.VideoCoursename);
@@ -60,21 +68,48 @@ public class VideoCourse extends AppCompatActivity {
 
     }
 
-    private void Iniciar() {
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
+    private void FillIn() {
+        JSONArray course = new JSONArray();
+        try {
+            course.put(0, getIntent().getExtras().getString("id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        List<String> list1 = new ArrayList<>();
-        list1.add("Google Map Google MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle MapGoogle Map");
+        JsonArrayRequest jar = new JsonArrayRequest(
+                Request.Method.POST,
+                Data.url + "showmodules",
+                course,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<modules>>(){}.getType();
+                        List<modules> lm = gson.fromJson(response.toString(), type);
 
-        List<String> list2 = new ArrayList<>();
-        list2.add("Xamarin Expandable ListView");
 
-        listDataHeader.add("Kotlin");
-        listDataHeader.add("JavaScript");
+                        listDataHeader = new ArrayList<>();
+                        listHash = new HashMap<>();
 
-        listHash.put(listDataHeader.get(0),list2);
-        listHash.put(listDataHeader.get(1),list1);
+                        for (int i = 0; i<lm.size(); i++) {
+                            List<String> list1 = new ArrayList<>();
+                            listDataHeader.add(lm.get(i).getNombre());
+                            for (int x = 0; x<lm.get(i).getVideos().size(); x ++)
+                            {
+                                list1.add(lm.get(i).getVideos().get(x).getNombre());
+                            }
+                            listHash.put(listDataHeader.get(i),list1);
+                        }
+                        listCourseInfo = new Expandiblecoursesvideos_adapter(getApplicationContext(),listDataHeader,listHash);
+                        listView.setAdapter(listCourseInfo);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Hay un problema", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyS.getinstance(getApplicationContext()).getRq().add(jar);
 
     }
 

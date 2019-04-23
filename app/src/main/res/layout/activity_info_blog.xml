@@ -15,7 +15,7 @@
             <LinearLayout
                 android:id="@+id/layoutblog"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="15dp">
 
