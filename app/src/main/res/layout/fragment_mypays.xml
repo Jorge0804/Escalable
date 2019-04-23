@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MypaysFragment"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp">
+
+    <TextView
+        android:id="@+id/lblplanes"
+        android:textColor="#ff000000"
+        android:textSize="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Planes"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblplan"
+        android:layout_below="@id/lblplanes"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Plan"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblstat"
+        android:layout_below="@id/lblplanes"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Status"
+        android:layout_toRightOf="@id/lblplan"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblfinish"
+        android:layout_below="@id/lblplanes"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Termina en"
+        android:layout_toRightOf="@id/lblstat"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/lblplan"
+        android:id="@+id/containerplains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_below="@id/containerplains"
+        android:id="@+id/lblcomprasindividuales"
+        android:textColor="#ff000000"
+        android:textSize="15dp"
+        android:layout_marginVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras Individuales"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblcurso"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Curso"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblprecio"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Precio"
+        android:layout_toRightOf="@id/lblcurso"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/lblcomprado"
+        android:layout_below="@id/lblcomprasindividuales"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:textColor="#ff000000"
+        android:text="Comprado"
+        android:layout_toRightOf="@id/lblprecio"
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/lblcurso"
+        android:id="@+id/containerindividualpurchases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
