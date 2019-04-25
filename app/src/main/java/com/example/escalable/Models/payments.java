@@ -11,12 +11,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.escalable.Adapters.Myplains_adapter;
+import com.example.escalable.Class.Data;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -83,15 +85,23 @@ public class payments {
         this.price = price;
     }
 
+//    Como que el error esta aqui
     public static void ShowPayments(View v, final Context context)
     {
         final RecyclerView recyclerView;
         recyclerView = v.findViewById(R.id.containerplains);
 
+        JSONArray payment = new JSONArray();
+        try {
+            payment.put(0, 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         JsonArrayRequest jar = new JsonArrayRequest(
                 Request.Method.POST,
-                "http://toshito.mipantano.com/api/showmypayments",
-                null,
+                Data.url + "showmypayments",
+                payment,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -114,4 +124,14 @@ public class payments {
         });
         VolleyS.getinstance(context).getRq().add(jar);
     }
+
+
+
+
+
+
+
+
+
+
 }

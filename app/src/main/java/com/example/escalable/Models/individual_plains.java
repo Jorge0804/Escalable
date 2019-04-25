@@ -10,12 +10,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.escalable.Adapters.Individual_purchases_adapter;
+import com.example.escalable.Class.Data;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -64,15 +66,23 @@ public class individual_plains {
         this.created_at = created_at;
     }
 
+//    O aqui
     public static void ShowIndividualPlains(View v, final Context context)
     {
         final RecyclerView recyclerView;
         recyclerView = v.findViewById(R.id.containerindividualpurchases);
 
+        JSONArray individual = new JSONArray();
+        try {
+            individual.put(0, 0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         JsonArrayRequest jar = new JsonArrayRequest(
                 Request.Method.POST,
-                "http://toshito.mipantano.com/api/showmyplans",
-                null,
+                Data.url + "showmyplans",
+                individual,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
