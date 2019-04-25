@@ -1,5 +1,6 @@
 package com.example.escalable.Activities;
 
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class VideoCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_course);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         listDataHeader = new ArrayList<>();
         listView = (ExpandableListView)findViewById(R.id.expandibllistvideos);
         FillIn();
