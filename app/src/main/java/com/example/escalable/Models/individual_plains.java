@@ -70,8 +70,8 @@ public class individual_plains {
         recyclerView = v.findViewById(R.id.containerindividualpurchases);
 
         JsonArrayRequest jar = new JsonArrayRequest(
-                Request.Method.GET,
-                "http://toshito.mipantano.com/api/showindividual",
+                Request.Method.POST,
+                "http://toshito.mipantano.com/api/showmyplans",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override

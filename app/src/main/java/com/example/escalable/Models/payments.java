@@ -89,8 +89,8 @@ public class payments {
         recyclerView = v.findViewById(R.id.containerplains);
 
         JsonArrayRequest jar = new JsonArrayRequest(
-                Request.Method.GET,
-                "http://toshito.mipantano.com/api/showplains",
+                Request.Method.POST,
+                "http://toshito.mipantano.com/api/showmypayments",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
