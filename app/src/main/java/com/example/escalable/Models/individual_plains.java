@@ -23,15 +23,19 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class individual_plains {
-    Integer id, course_id;
+    Integer id, course_id, user_id;
     Double price;
-    String created_at;
+    String created_at, transaction, currency, updated_at;
 
-    public individual_plains(Integer id, Integer course_id, Double price, String created_at) {
+    public individual_plains(Integer id, Integer course_id, Integer user_id, Double price, String created_at, String transaction, String currency, String updated_at) {
         this.id = id;
         this.course_id = course_id;
+        this.user_id = user_id;
         this.price = price;
         this.created_at = created_at;
+        this.transaction = transaction;
+        this.currency = currency;
+        this.updated_at = updated_at;
     }
 
     public Integer getId() {
@@ -50,6 +54,14 @@ public class individual_plains {
         this.course_id = course_id;
     }
 
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -66,36 +78,59 @@ public class individual_plains {
         this.created_at = created_at;
     }
 
-//    O aqui
+    public String getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(String transaction) {
+        this.transaction = transaction;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
+
     public static void ShowIndividualPlains(View v, final Context context)
     {
-        final RecyclerView recyclerView;
-        recyclerView = v.findViewById(R.id.containerindividualpurchases);
-
-        JSONArray individual = new JSONArray();
+        JSONArray user = new JSONArray();
         try {
-            individual.put(0, 0);
+            user.put(0, Data.getapi_token());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        final RecyclerView recyclerView;
+        recyclerView = v.findViewById(R.id.containerindividualpurchases);
+
         JsonArrayRequest jar = new JsonArrayRequest(
                 Request.Method.POST,
                 Data.url + "showmyplans",
-                individual,
+                user,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<List<individual_plains>>(){}.getType();
-                        List<individual_plains> lc = gson.fromJson(response.toString(), type);
-                        Individual_purchases_adapter  individual_purchases_adapter = new Individual_purchases_adapter(lc);
+                      Gson gson = new Gson();
+                      Type type = new TypeToken<List<individual_plains>>(){}.getType();
+                      List<individual_plains> Ip = gson.fromJson(response.toString(), type);
+                      Individual_purchases_adapter  individual_purchases_adapter = new Individual_purchases_adapter(Ip);
 
-                        recyclerView.setAdapter(individual_purchases_adapter);
+                      recyclerView.setAdapter(individual_purchases_adapter);
 
-                        LinearLayoutManager lm = new LinearLayoutManager(context);
-                        lm.setOrientation(LinearLayoutManager.VERTICAL);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                      LinearLayoutManager lm = new LinearLayoutManager(context);
+                      lm.setOrientation(LinearLayoutManager.VERTICAL);
+                      recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     }
                 }, new Response.ErrorListener() {
             @Override

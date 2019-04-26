@@ -67,7 +67,6 @@ public class BlogsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v;
-        RecyclerView recyclerView;
         v = inflater.inflate(R.layout.fragment_blogs, container, false);
         blogs.ShowBlogs(v, getContext());
         return v;

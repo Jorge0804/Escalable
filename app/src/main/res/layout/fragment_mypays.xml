@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.MypaysFragment"
     android:paddingHorizontal="20dp"
-    android:paddingVertical="20dp">
+    android:paddingVertical="20dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/lblplanes"
@@ -15,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Planes"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblplan"
@@ -26,7 +26,6 @@
         android:text="Plan"
         android:layout_marginTop="5dp"
         android:textSize="14dp"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblstat"
@@ -38,7 +37,6 @@
         android:layout_toRightOf="@id/lblplan"
         android:layout_marginTop="5dp"
         android:textSize="14dp"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblfinish"
@@ -69,7 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Compras Individuales"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblcurso"
@@ -80,7 +77,6 @@
         android:text="Curso"
         android:layout_marginTop="5dp"
         android:textSize="14dp"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblprecio"
@@ -92,7 +88,6 @@
         android:layout_toRightOf="@id/lblcurso"
         android:layout_marginTop="5dp"
         android:textSize="14dp"/>
-
     <TextView
         android:gravity="center"
         android:id="@+id/lblcomprado"

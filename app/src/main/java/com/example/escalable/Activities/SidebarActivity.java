@@ -20,12 +20,13 @@ import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
 import com.example.escalable.Fragments.InfoCourseFragment;
 import com.example.escalable.Fragments.MypaysFragment;
+import com.example.escalable.Fragments.MyplainsFragment;
 import com.example.escalable.Fragments.UserFragment;
 import com.example.escalable.R;
 
 public class SidebarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, CoursesFragment.OnFragmentInteractionListener,
-        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener {
+        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener, MypaysFragment.OnFragmentInteractionListener , MyplainsFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,8 @@ public class SidebarActivity extends AppCompatActivity
             selected_fragment = true;
             fragment = new InfoCourseFragment();
         } else if (id == R.id.nav_plains) {
-
+            selected_fragment = true;
+            fragment = new MyplainsFragment();
         } else if (id == R.id.nav_mypays){
             selected_fragment = true;
             fragment = new MypaysFragment();

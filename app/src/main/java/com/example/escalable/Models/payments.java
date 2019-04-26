@@ -25,15 +25,19 @@ import java.util.List;
 
 public class payments {
     Integer id, user_id;
-    String plan, status, finished_at;
+    String plan, transaction, currency, status, finished_at, created_at, updated_at;
     Double price;
 
-    public payments(Integer id, Integer user_id, String plan, String status, String finished_at, Double price) {
+    public payments(Integer id, Integer user_id, String plan, String transaction, String currency, String status, String finished_at, String created_at, String updated_at, Double price) {
         this.id = id;
         this.user_id = user_id;
         this.plan = plan;
+        this.transaction = transaction;
+        this.currency = currency;
         this.status = status;
         this.finished_at = finished_at;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
         this.price = price;
     }
 
@@ -61,6 +65,22 @@ public class payments {
         this.plan = plan;
     }
 
+    public String getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(String transaction) {
+        this.transaction = transaction;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -77,6 +97,22 @@ public class payments {
         this.finished_at = finished_at;
     }
 
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -85,26 +121,26 @@ public class payments {
         this.price = price;
     }
 
-//    Como que el error esta aqui
     public static void ShowPayments(View v, final Context context)
     {
-        final RecyclerView recyclerView;
-        recyclerView = v.findViewById(R.id.containerplains);
-
-        JSONArray payment = new JSONArray();
+        JSONArray user = new JSONArray();
         try {
-            payment.put(0, 0);
+            user.put(0, Data.getapi_token());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        final RecyclerView recyclerView;
+        recyclerView = v.findViewById(R.id.containerplains);
+
         JsonArrayRequest jar = new JsonArrayRequest(
                 Request.Method.POST,
                 Data.url + "showmypayments",
-                payment,
+                user,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<payments>>(){}.getType();
                         List<payments> lc = gson.fromJson(response.toString(), type);
