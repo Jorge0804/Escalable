@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.escalable.Models.courses;
 import com.example.escalable.Models.individual_plains;
 import com.example.escalable.R;
 
@@ -32,9 +33,9 @@ public class Individual_purchases_adapter extends RecyclerView.Adapter<Individua
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.txt_name_course.setText(ip.get(i).getCourse_id().toString());
-        viewHolder.txt_price_course.setText("$"+ip.get(i).getPrice());
-        viewHolder.txt_date_course.setText(ip.get(i).getCreated_at());
+        viewHolder.txt_name_course.setText(ip.get(i).getCourse().getName());
+        viewHolder.txt_price_course.setText("$"+ip.get(i).getPrice().toString());
+        viewHolder.txt_date_course.setText(ip.get(i).getCreated_at().substring(0,10));
     }
 
     @Override

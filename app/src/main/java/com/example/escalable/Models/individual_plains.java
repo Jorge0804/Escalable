@@ -20,14 +20,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.lang.reflect.Type;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class individual_plains {
     Integer id, course_id, user_id;
     Double price;
     String created_at, transaction, currency, updated_at;
+    courses course;
 
-    public individual_plains(Integer id, Integer course_id, Integer user_id, Double price, String created_at, String transaction, String currency, String updated_at) {
+    public individual_plains(Integer id, Integer course_id, Integer user_id, Double price, String created_at, String transaction, String currency, String updated_at, courses course) {
         this.id = id;
         this.course_id = course_id;
         this.user_id = user_id;
@@ -36,6 +39,7 @@ public class individual_plains {
         this.transaction = transaction;
         this.currency = currency;
         this.updated_at = updated_at;
+        this.course = course;
     }
 
     public Integer getId() {
@@ -100,6 +104,14 @@ public class individual_plains {
 
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public courses getCourse() {
+        return course;
+    }
+
+    public void setCourse(courses course) {
+        this.course = course;
     }
 
     public static void ShowIndividualPlains(View v, final Context context)
