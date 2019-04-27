@@ -140,7 +140,6 @@ public class payments {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<payments>>(){}.getType();
                         List<payments> lc = gson.fromJson(response.toString(), type);

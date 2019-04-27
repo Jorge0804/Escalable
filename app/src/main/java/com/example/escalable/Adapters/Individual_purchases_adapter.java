@@ -32,9 +32,9 @@ public class Individual_purchases_adapter extends RecyclerView.Adapter<Individua
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.txt_name_course.setText("$"+ip.get(i).getCourse_id().toString());
+        viewHolder.txt_name_course.setText(ip.get(i).getCourse_id().toString());
         viewHolder.txt_price_course.setText("$"+ip.get(i).getPrice());
-        viewHolder.txt_date_course.setText("$"+ip.get(i).getCreated_at());
+        viewHolder.txt_date_course.setText(ip.get(i).getCreated_at());
     }
 
     @Override

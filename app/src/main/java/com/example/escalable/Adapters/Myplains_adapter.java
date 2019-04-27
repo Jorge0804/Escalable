@@ -35,9 +35,9 @@ public class Myplains_adapter extends RecyclerView.Adapter<Myplains_adapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.txt_name.setText("$"+pl.get(i).getPlan());
-        viewHolder.txt_price.setText("$"+pl.get(i).getPrice().toString());
-        viewHolder.txt_date.setText("$"+pl.get(i).getFinished_at());
+        viewHolder.txt_name.setText(pl.get(i).getPlan());
+        viewHolder.txt_state.setText(pl.get(i).getStatus());
+        viewHolder.txt_date.setText(pl.get(i).getFinished_at());
     }
 
     @Override
@@ -46,13 +46,13 @@ public class Myplains_adapter extends RecyclerView.Adapter<Myplains_adapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txt_name, txt_price, txt_date;
+        TextView txt_name, txt_state, txt_date;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             context = itemView.getContext();
             txt_name = itemView.findViewById(R.id.lblplain);
-            txt_price = itemView.findViewById(R.id.lblstatus);
+            txt_state = itemView.findViewById(R.id.lblstatus);
             txt_date = itemView.findViewById(R.id.lbldate);
         }
     }
