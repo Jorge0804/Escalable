@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,18 +21,20 @@ import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
 import com.example.escalable.Fragments.InfoCourseFragment;
+import com.example.escalable.Fragments.MainFragment;
 import com.example.escalable.Fragments.MypaysFragment;
 import com.example.escalable.Fragments.UserFragment;
 import com.example.escalable.R;
 
 public class SidebarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, CoursesFragment.OnFragmentInteractionListener,
-        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener {
+        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener , MypaysFragment.OnFragmentInteractionListener, MainFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,6 +48,8 @@ public class SidebarActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setBackgroundColor(getResources().getColor(R.color.blue));
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, new MainFragment()).commit();
     }
 
     @Override
