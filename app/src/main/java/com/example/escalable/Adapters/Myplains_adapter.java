@@ -17,11 +17,11 @@ import java.util.List;
 
 public class Myplains_adapter extends RecyclerView.Adapter<Myplains_adapter.ViewHolder>{
 
-    private List<payments> cl;
+    private List<payments> pl;
     Context context;
 
-    public Myplains_adapter(List<payments> cl) {
-        this.cl = cl;
+    public Myplains_adapter(List<payments> pl) {
+        this.pl = pl;
     }
 
     @NonNull
@@ -35,24 +35,24 @@ public class Myplains_adapter extends RecyclerView.Adapter<Myplains_adapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.txt_name.setText("$"+cl.get(i).getPlan());
-        viewHolder.txt_price.setText("$"+cl.get(i).getPrice().toString());
-        viewHolder.txt_date.setText("$"+cl.get(i).getFinished_at());
+        viewHolder.txt_name.setText(pl.get(i).getPlan());
+        viewHolder.txt_state.setText(pl.get(i).getStatus());
+        viewHolder.txt_date.setText(pl.get(i).getFinished_at());
     }
 
     @Override
     public int getItemCount() {
-        return cl.size();
+        return pl.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txt_name, txt_price, txt_date;
+        TextView txt_name, txt_state, txt_date;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             context = itemView.getContext();
             txt_name = itemView.findViewById(R.id.lblplain);
-            txt_price = itemView.findViewById(R.id.lblstatus);
+            txt_state = itemView.findViewById(R.id.lblstatus);
             txt_date = itemView.findViewById(R.id.lbldate);
         }
     }

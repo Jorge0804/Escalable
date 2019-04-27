@@ -8,17 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.escalable.Models.courses;
 import com.example.escalable.Models.individual_plains;
 import com.example.escalable.R;
 
 import java.util.List;
 
 public class Individual_purchases_adapter extends RecyclerView.Adapter<Individual_purchases_adapter.ViewHolder> {
-    private List<individual_plains> cl;
+    private List<individual_plains> ip;
     Context context;
 
-    public Individual_purchases_adapter(List<individual_plains> cl) {
-        this.cl = cl;
+    public Individual_purchases_adapter(List<individual_plains> ip) {
+        this.ip = ip;
     }
 
     @NonNull
@@ -32,25 +33,27 @@ public class Individual_purchases_adapter extends RecyclerView.Adapter<Individua
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.txt_name.setText("$"+cl.get(i).getCourse_id().toString());
-        viewHolder.txt_price.setText("$"+cl.get(i).getPrice().toString());
-        viewHolder.txt_date.setText("$"+cl.get(i).getCreated_at());
+        viewHolder.txt_name_course.setText(ip.get(i).getCourse().getName());
+        viewHolder.txt_price_course.setText("$"+ip.get(i).getPrice().toString());
+        viewHolder.txt_date_course.setText(ip.get(i).getCreated_at().substring(0,10));
     }
 
     @Override
     public int getItemCount() {
-        return cl.size();
+        return ip.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txt_name, txt_price, txt_date;
+        TextView txt_name_course,
+                txt_price_course,
+                txt_date_course;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             context = itemView.getContext();
-            txt_name = itemView.findViewById(R.id.lblcurse);
-            txt_price = itemView.findViewById(R.id.lblprice);
-            txt_date = itemView.findViewById(R.id.lblboughtdate);
+            txt_name_course = itemView.findViewById(R.id.lblcurse);
+            txt_price_course = itemView.findViewById(R.id.lblprice);
+            txt_date_course = itemView.findViewById(R.id.lblboughtdate);
         }
     }
 }

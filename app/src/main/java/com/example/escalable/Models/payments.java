@@ -11,27 +11,33 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.escalable.Adapters.Myplains_adapter;
+import com.example.escalable.Class.Data;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
 public class payments {
     Integer id, user_id;
-    String plan, status, finished_at;
+    String plan, transaction, currency, status, finished_at, created_at, updated_at;
     Double price;
 
-    public payments(Integer id, Integer user_id, String plan, String status, String finished_at, Double price) {
+    public payments(Integer id, Integer user_id, String plan, String transaction, String currency, String status, String finished_at, String created_at, String updated_at, Double price) {
         this.id = id;
         this.user_id = user_id;
         this.plan = plan;
+        this.transaction = transaction;
+        this.currency = currency;
         this.status = status;
         this.finished_at = finished_at;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
         this.price = price;
     }
 
@@ -59,6 +65,22 @@ public class payments {
         this.plan = plan;
     }
 
+    public String getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(String transaction) {
+        this.transaction = transaction;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -75,6 +97,22 @@ public class payments {
         this.finished_at = finished_at;
     }
 
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -85,13 +123,20 @@ public class payments {
 
     public static void ShowPayments(View v, final Context context)
     {
+        JSONArray user = new JSONArray();
+        try {
+            user.put(0, Data.getapi_token());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         final RecyclerView recyclerView;
         recyclerView = v.findViewById(R.id.containerplains);
 
         JsonArrayRequest jar = new JsonArrayRequest(
-                Request.Method.GET,
-                "http://toshito.mipantano.com/api/showplains",
-                null,
+                Request.Method.POST,
+                Data.url + "showmypayments",
+                user,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -114,4 +159,14 @@ public class payments {
         });
         VolleyS.getinstance(context).getRq().add(jar);
     }
+
+
+
+
+
+
+
+
+
+
 }
