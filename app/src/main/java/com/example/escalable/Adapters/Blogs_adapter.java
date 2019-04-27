@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.escalable.Activities.MainActivity;
@@ -46,8 +47,19 @@ public class Blogs_adapter extends RecyclerView.Adapter<Blogs_adapter.ViewHolder
         viewHolder.txt_title.setText(bl.get(i).getName().toString());
         viewHolder.txt_extract.setText(bl.get(i).getExcerpt().toString());
         viewHolder.txt_footer.setText(bl.get(i).getId() + "|" + bl.get(i).getCreated_at());
+        viewHolder.txt_numlikes.setText(bl.get(i).getLikes().size()+" - likes");
 
-        viewHolder.itemView.setOnClickListener(blogs.showinfo(bl.get(i), context));
+        for (int x = 0; x<bl.get(i).getLikes().size(); x++)
+        {
+            if (Data.getapi_token().equals(bl.get(i).getLikes().get(x).getApi_token())) {
+                viewHolder.ImageLike.setImageResource(R.mipmap.like);
+                bl.get(i).liked = 1;
+            }
+        }
+
+        viewHolder.ImageLike.setOnClickListener(blogs.like(viewHolder.ImageLike, bl.get(i), viewHolder.txt_numlikes,
+                context, i));
+        viewHolder.itemView.setOnClickListener(blogs.showinfo(bl.get(i), context, viewHolder.ImageLike));
     }
 
     @Override
@@ -56,8 +68,8 @@ public class Blogs_adapter extends RecyclerView.Adapter<Blogs_adapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txt_title, txt_extract, txt_footer;
-        ImageView image;
+        TextView txt_title, txt_extract, txt_footer, txt_numlikes;
+        ImageView image, ImageLike;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -66,6 +78,8 @@ public class Blogs_adapter extends RecyclerView.Adapter<Blogs_adapter.ViewHolder
             txt_title = itemView.findViewById(R.id.titlecardviewblog);
             txt_extract = itemView.findViewById(R.id.extractcardviewblog);
             txt_footer = itemView.findViewById(R.id.footerblogcardview);
+            ImageLike = itemView.findViewById(R.id.btn_like);
+            txt_numlikes = itemView.findViewById(R.id.text_nlikes);
         }
     }
 }

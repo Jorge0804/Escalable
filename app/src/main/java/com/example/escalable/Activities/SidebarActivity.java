@@ -1,5 +1,6 @@
 package com.example.escalable.Activities;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,23 +15,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.escalable.Class.Data;
 import com.example.escalable.Fragments.BlogsFragment;
 import com.example.escalable.Fragments.CoursesFragment;
 import com.example.escalable.Fragments.InfoCourseFragment;
+import com.example.escalable.Fragments.MainFragment;
+import com.example.escalable.Fragments.MyCoursesFragment;
 import com.example.escalable.Fragments.MypaysFragment;
 import com.example.escalable.Fragments.UserFragment;
 import com.example.escalable.R;
 
 public class SidebarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, CoursesFragment.OnFragmentInteractionListener,
-        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener {
+        BlogsFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener,
+        MyCoursesFragment.OnFragmentInteractionListener, MainFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar);
+        Fragment fr = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, fr).commit();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -93,7 +101,8 @@ public class SidebarActivity extends AppCompatActivity
             selected_fragment = true;
             fragment = new BlogsFragment();
         } else if (id == R.id.nav_mycourses) {
-
+            selected_fragment = true;
+            fragment = new MyCoursesFragment();
         } else if (id == R.id.nav_user) {
             selected_fragment = true;
             fragment = new UserFragment();

@@ -33,6 +33,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class courses{
@@ -125,6 +126,76 @@ public class courses{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context, "Verifica tu conexión a internet", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyS.getinstance(context).getRq().add(jar);
+    }
+
+    public static void ShowMyCourses(View v, final Context context)
+    {
+        final RecyclerView recyclerView;
+        recyclerView = v.findViewById(R.id.my_courses_container);
+
+        JSONArray user = new JSONArray();
+        try {
+            user.put(0, Data.getapi_token());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonArrayRequest jar = new JsonArrayRequest(
+                Request.Method.POST,
+                Data.url + "mycourses",
+                user,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<courses>>(){}.getType();
+                        List<courses> lc = gson.fromJson(response.toString(), type);
+                        Courses_adapter courses_adapter = new Courses_adapter(lc);
+                        recyclerView.setAdapter(courses_adapter);
+
+                        LinearLayoutManager lm = new LinearLayoutManager(context);
+                        lm.setOrientation(LinearLayoutManager.VERTICAL);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No tienes cursos disponibles", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyS.getinstance(context).getRq().add(jar);
+    }
+
+    public static void ShowBestCourses(View v, final Context context)
+    {
+        final RecyclerView recyclerView;
+        recyclerView = v.findViewById(R.id.bestcourses);
+
+
+        JsonArrayRequest jar = new JsonArrayRequest(
+                Request.Method.GET,
+                Data.url + "bestcourses",
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<courses>>(){}.getType();
+                        List<courses> lc = gson.fromJson(response.toString(), type);
+                        Courses_adapter courses_adapter = new Courses_adapter(lc);
+                        recyclerView.setAdapter(courses_adapter);
+
+                        LinearLayoutManager lm = new LinearLayoutManager(context);
+                        lm.setOrientation(LinearLayoutManager.VERTICAL);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No tienes cursos disponibles", Toast.LENGTH_SHORT).show();
             }
         });
         VolleyS.getinstance(context).getRq().add(jar);

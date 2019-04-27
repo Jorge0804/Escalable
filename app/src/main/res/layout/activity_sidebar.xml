@@ -23,5 +23,4 @@
         android:paddingLeft="20dp"
         app:itemTextColor="#fff"
         app:menu="@menu/activity_sidebar_drawer" />
-
 </android.support.v4.widget.DrawerLayout>
