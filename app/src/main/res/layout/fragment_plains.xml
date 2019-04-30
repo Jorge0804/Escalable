@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PlainsFragment">
+
+    <!--Mensual-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardviewmensualpays"
+        android:layout_width="320dp"
+        android:layout_height="280dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="30dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/cardview_style"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/paypalmensual_name"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mensual"
+                android:textSize="18sp"
+                android:textColor="@color/blue" />
+            <TextView
+                android:id="@+id/paypalmensual_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 2000"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalmensual_name"
+                android:textColor="@color/orange"/>
+            <TextView
+                android:id="@+id/paypalmensualtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡Acceso a todos los cursos!"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalmensual_price"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/paypalmensualcontent"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:text="Ten acceso al contenido exclusivo
+por un mes"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalmensualtitle"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"/>
+
+            <ImageButton
+                android:id="@+id/paypalmensual_button"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_below="@+id/paypalmensualcontent"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="14dp"
+                android:textColor="#fff"
+                android:background="#FFC439"
+                android:src="@mipmap/paypal" />
+            <ImageButton
+                android:id="@+id/paypalmensual_visabutton"
+                android:layout_below="@+id/paypalmensual_button"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/visa"
+                android:textSize="14dp"
+                android:background="#21569A"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="10dp"/>
+            <ImageButton
+                android:id="@+id/paypalmensual_masterbutton"
+                android:layout_below="@+id/paypalmensual_button"
+                android:layout_toRightOf="@id/paypalmensual_visabutton"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Comprar"
+                android:textSize="14dp"
+                android:src="@mipmap/master"
+                android:background="#3E3939"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <!--Anual-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardviewanualpays"
+        android:layout_below="@id/cardviewmensualpays"
+        android:layout_width="320dp"
+        android:layout_height="280dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="30dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cardview_style"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/paypalanual_name"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anual"
+                android:textSize="18sp"
+                android:textColor="@color/blue" />
+            <TextView
+                android:id="@+id/paypalanual_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 6000"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalanual_name"
+                android:textColor="@color/orange"/>
+            <TextView
+                android:id="@+id/paypalanualtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¡Acceso a todos los cursos!"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalanual_price"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/paypalanualcontent"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:text="Ten acceso al contenido exclusivo
+por un mes"
+                android:textSize="14sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/paypalanualtitle"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"/>
+
+            <ImageButton
+                android:id="@+id/paypalanual_button"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_below="@+id/paypalanualcontent"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="14dp"
+                android:textColor="#fff"
+                android:background="#FFC439"
+                android:src="@mipmap/paypal" />
+            <ImageButton
+                android:id="@+id/paypalanual_visabutton"
+                android:layout_below="@+id/paypalanual_button"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/visa"
+                android:textSize="14dp"
+                android:background="#21569A"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="10dp"/>
+            <ImageButton
+                android:id="@+id/paypalanual_masterbutton"
+                android:layout_below="@+id/paypalanual_button"
+                android:layout_toRightOf="@id/paypalanual_visabutton"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Comprar"
+                android:textSize="14dp"
+                android:src="@mipmap/master"
+                android:background="#3E3939"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
