@@ -61,7 +61,7 @@ public class VideoCourse extends AppCompatActivity {
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(VideoCourseVideo);
 
-        link = Uri.parse("http://toshito.mipantano.com/Videos/presentacion.mp4");
+        link = Uri.parse("http://toshito.mipantano.com/uploads/155649153222.%20Ejercicios%20de%20composición.mp4");
         VideoCourseVideo.setVideoURI(link);
         VideoCourseVideo.setMediaController(mediaController);
 

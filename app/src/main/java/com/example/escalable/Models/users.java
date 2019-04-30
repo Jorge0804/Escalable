@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.BoringLayout;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -16,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.escalable.Activities.Login;
 import com.example.escalable.Activities.SidebarActivity;
 import com.example.escalable.Class.Data;
+import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
 import com.google.gson.JsonObject;
 
@@ -148,5 +151,40 @@ public class users {
             }
         });
         VolleyS.getinstance(context).getRq().add(jar);
+    }
+
+    public static void GetUser(final View v, final Context context)
+    {
+        String name = "User", email = "user@gmail.com";
+        final JSONObject user = new JSONObject();
+        try {
+            user.put("api_token", Data.getapi_token());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jar = new JsonObjectRequest(
+                Request.Method.POST,
+                Data.url + "getuser",
+                user,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            ((TextView) v.findViewById(R.id.myprofileusername)).setText(response.getString("name"));
+                            ((TextView) v.findViewById(R.id.myprofileemail)).setText(response.getString("email"));
+                            ((TextView) v.findViewById(R.id.welcomeuser)).setText("Bienvenido " + response.getString("email"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No tienes Internet", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyS.getinstance(context).getRq().add(jar);
+
     }
 }

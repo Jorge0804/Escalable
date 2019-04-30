@@ -1,6 +1,8 @@
 package com.example.escalable.Activities;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.escalable.Adapters.Expandiblecoursesinfo_adapter;
 import com.example.escalable.Class.Data;
+import com.example.escalable.Fragments.PurchaseFragment;
 import com.example.escalable.Models.modules;
 import com.example.escalable.R;
 import com.example.escalable.Singletones.VolleyS;
@@ -40,7 +43,7 @@ public class InfoCourse extends AppCompatActivity {
     HashMap<String,List<String>> listHash;
     TextView InfoCourseName, InfoCourseInfo;
     ImageView InfoCourseImage;
-    Button InfoCourseSeeCourse;
+    Button InfoCourseSeeCourse, Buttonpay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class InfoCourse extends AppCompatActivity {
         InfoCourseImage = findViewById(R.id.InfoCourseImage);
         InfoCourseSeeCourse = findViewById(R.id.InfoCourseSeeCourse);
 
+        Buttonpay = findViewById(R.id.InfoCoursePay);
+
         InfoCourseSeeCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +67,17 @@ public class InfoCourse extends AppCompatActivity {
                 in.putExtra("name", getIntent().getExtras().getString("name"));
                 in.putExtra("id", getIntent().getExtras().getString("id"));
                 startActivity(in);
+            }
+        });
+
+        Buttonpay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PurchasedActivity.class);
+                intent.putExtra("name", getIntent().getExtras().getString("name"));
+                intent.putExtra("information", getIntent().getExtras().getString("information"));
+                intent.putExtra("price", getIntent().getExtras().getString("price"));
+                startActivity(intent);
             }
         });
 

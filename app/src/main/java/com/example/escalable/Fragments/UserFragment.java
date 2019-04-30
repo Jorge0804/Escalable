@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.escalable.Activities.Login;
 import com.example.escalable.Class.Data;
+import com.example.escalable.Models.users;
 import com.example.escalable.R;
 
 /**
@@ -70,6 +71,7 @@ public class UserFragment extends Fragment {
         // Inflate the layout for this fragment
         View v;
         v = inflater.inflate(R.layout.fragment_user, container, false);
+        users.GetUser(v, getContext());
         v.findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

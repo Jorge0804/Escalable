@@ -211,7 +211,7 @@ public class courses{
                 in.putExtra("name", c.getName());
                 in.putExtra("information", c.getInformation());
                 in.putExtra("src", c.getSrc());
-                in.putExtra("price", c.getPrice());
+                in.putExtra("price", c.getPrice().toString());
                 context.startActivity(in);
             }
         };
