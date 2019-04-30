@@ -76,6 +76,7 @@ public class UserFragment extends Fragment {
                 Data.removeapi_token();
                 Intent in = new Intent(getContext(), Login.class);
                 startActivity(in);
+                getActivity().finish();
             }
         });
         return v;

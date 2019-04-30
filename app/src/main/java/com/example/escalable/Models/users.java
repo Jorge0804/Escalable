@@ -1,6 +1,7 @@
 package com.example.escalable.Models;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -75,7 +76,7 @@ public class users {
         this.api_token = api_token;
     }
 
-    public static void Login(String mail, String pass, final Context context)
+    public static void Login(String mail, String pass, final Context context, final Activity activity)
     {
         JSONObject user = new JSONObject();
         try {
@@ -96,6 +97,7 @@ public class users {
                             Data.user_name = response.getString("name");
                             Data.setapi_token(response.getString("api_token"));
                             Toast.makeText(context, "Bienvenido "+ response.getString("name"), Toast.LENGTH_SHORT).show();
+                            activity.finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -111,7 +113,7 @@ public class users {
         VolleyS.getinstance(context).getRq().add(jar);
     }
 
-    public static void Register(String name, String email, String pass, final Context context)
+    public static void Register(String name, String email, String pass, final Context context, final Activity activity)
     {
         JSONObject user = new JSONObject();
         try {
@@ -137,6 +139,7 @@ public class users {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        activity.finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -44,11 +44,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId())
         {
             case R.id.button_login:
-                users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext());
+                users.Login(edit_user.getText().toString(), edit_pass.getText().toString(), getApplicationContext(), this);
                 break;
             case R.id.txt_register:
                 Intent intent1 = new Intent(getApplicationContext(), Register.class);
                 startActivity(intent1);
+                finish();
                 break;
             case R.id.txt_password:
                 Intent intent2 = new Intent(getApplicationContext(), Recover_account.class);
