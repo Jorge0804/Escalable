@@ -12,6 +12,7 @@ public class Data {
     private String token;
     public static String Image_url = "http://toshito.mipantano.com/img/";
     public static String url = "http://toshito.mipantano.com/api/";
+    public static String user_name;
 
     public static Boolean check_session()
     {

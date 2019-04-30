@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="20dp"
     tools:context=".Activities.InfoBlog">
     <ScrollView
         android:layout_width="match_parent"
@@ -13,68 +12,134 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:id="@+id/layoutblog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="15dp">
-
-                <!--Titulo del Blog-->
-                <TextView
-                    android:id="@+id/blogtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/layoutblog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginHorizontal="20dp"
-                    android:text="Huawei cambiará de sistema operativo"
-                    android:textAlignment="center"
-                    android:textColor="#ff000000"
-                    android:textSize="22sp" />
+                    android:layout_marginTop="15dp">
 
-                <!--Creador del Blog-->
-                <TextView
-                    android:id="@+id/bloguser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Admin"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
+                    <!--Titulo del Blog-->
+                    <TextView
+                        android:id="@+id/blogtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="Huawei cambiará de sistema operativo"
+                        android:textAlignment="center"
+                        android:textColor="#ff000000"
+                        android:textSize="22sp" />
 
-                <!--Tipo de usuario y fecha-->
-                <TextView
-                    android:id="@+id/bloginfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Admin | 10/04/2019"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
+                    <!--Creador del Blog-->
+                    <TextView
+                        android:id="@+id/bloguser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin"
+                        android:textColor="#ff000000"
+                        android:textSize="14sp" />
 
-                <!--Imagen del blog-->
-                <ImageView
-                    android:id="@+id/blogimage"
+                    <!--Tipo de usuario y fecha-->
+                    <TextView
+                        android:id="@+id/bloginfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin | 10/04/2019"
+                        android:textColor="#ff000000"
+                        android:textSize="14sp" />
+
+                    <!--Imagen del blog-->
+                    <ImageView
+                        android:id="@+id/blogimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="178dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@drawable/cardview_blog_style"
+                        android:src="@mipmap/huawei" />
+
+                    <!--Extracto del Blog-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginVertical="5dp"
+                        android:text="¿Java Srript un robo?"
+                        android:textColor="#ff000000"
+                        android:id="@+id/excerpt"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/blogcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera quelogró hacer un libro de textos especimen. No sólo sobrevi-vió 500 años, sino que también ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas, las cuales contenían pasajesde Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incl.ye versiones de Lorem Ipsum."
+                        android:textAlignment="textStart"
+                        android:textColor="#353535" />
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="178dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginVertical="5dp"
-                    android:background="@drawable/cardview_blog_style"
-                    android:src="@mipmap/huawei" />
+                    android:background="@drawable/cardview_video_style">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/user_comment"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Usuario"
+                        android:textColor="@color/blue"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_comment"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColorHint="@color/grey_text"
+                        android:hint="Escribe tu comentario"
+                        android:backgroundTint="@color/orange"/>
 
-                <!--Extracto del Blog-->
-                <TextView
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right">
+                        <Button
+                            android:layout_width="80dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/button_red"
+                            android:textColor="#fff"
+                            android:id="@+id/cancel_commentt"
+                            android:textAllCaps="false"
+                            android:text="Cancelar"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"/>
+                        <Button
+                            android:layout_width="80dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/button_blue"
+                            android:textColor="#fff"
+                            android:id="@+id/post_commment"
+                            android:textAllCaps="false"
+                            android:text="Publicar"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginVertical="5dp"
-                    android:text="¿Java Srript un robo?"
-                    android:textColor="#ff000000"
-                    android:id="@+id/excerpt"
-                    android:textSize="20dp" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/comments_container"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:id="@+id/blogcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor(N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera quelogró hacer un libro de textos especimen. No sólo sobrevi-vió 500 años, sino que también ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas, las cuales contenían pasajesde Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incl.ye versiones de Lorem Ipsum."
-                    android:textAlignment="textStart"
-                    android:textColor="#353535" />
+                </android.support.v7.widget.RecyclerView>
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

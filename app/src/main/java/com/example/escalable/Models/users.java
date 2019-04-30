@@ -84,6 +84,7 @@ public class users {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         JsonObjectRequest jar = new JsonObjectRequest(
                 Request.Method.POST,
                 Data.url + "login",
@@ -92,6 +93,7 @@ public class users {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            Data.user_name = response.getString("name");
                             Data.setapi_token(response.getString("api_token"));
                             Toast.makeText(context, "Bienvenido "+ response.getString("name"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
