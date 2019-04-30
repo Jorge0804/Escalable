@@ -97,7 +97,6 @@ public class comments {
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<comments>>(){}.getType();
                         List<comments> lc = gson.fromJson(response.toString(), type);
-                        Toast.makeText(context, lc.get(0).getContent(), Toast.LENGTH_SHORT).show();
                         Comments_adapter comments_adapter = new Comments_adapter(lc);
                         recyclerView.setAdapter(comments_adapter);
                         LinearLayoutManager lm = new LinearLayoutManager(context);

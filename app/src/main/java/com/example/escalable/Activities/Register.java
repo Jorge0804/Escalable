@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId())
         {
             case R.id.button_register:
-                users.Register(name_txt.getText().toString(), email_txt.getText().toString(), password_txt.getText().toString(), getApplicationContext());
+                users.Register(name_txt.getText().toString(), email_txt.getText().toString(), password_txt.getText().toString(), getApplicationContext(), this);
                 break;
             case R.id.txt_cancel:
                 finish();
